@@ -3,7 +3,7 @@ package pieces;
 import board.*;
 
 public class PieceMovement {
-	public boolean pawnCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean pawnCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		if ((row == 1) && ((col == 1) || (col == -1)))
@@ -13,7 +13,7 @@ public class PieceMovement {
 		}
 		return false;
 	}
-	public boolean knightCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean knightCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		int rowSign = row < 0 ? -1 : 1;
@@ -24,14 +24,14 @@ public class PieceMovement {
 			return true;
 		return false;
 	}
-	public boolean kingCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean kingCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		int rowSign = row < 0 ? -1 : 1;
 		int colSign = col < 0 ? -1 : 1;
 		return ((row * rowSign) <= 1)  && ((col * colSign) <= 1);
 	}
-	public boolean bishopCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean bishopCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		int rowSign = row < 0 ? -1 : 1;
@@ -45,7 +45,7 @@ public class PieceMovement {
 		}
 		return false;
 	}
-	public boolean rookCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean rookCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		int rowSign = row < 0 ? -1 : 1;
@@ -63,7 +63,7 @@ public class PieceMovement {
 		}
 		return false;
 	}
-	public boolean queenCheckMove(Piece piece, BoardPosition newPosition, Board board){
+	public static boolean queenCheckMove(Piece piece, BoardPosition newPosition, Board board){
 		int row = newPosition.row - piece.pos.row;
 		int col = newPosition.col - piece.pos.col;
 		int rowSign = row < 0 ? -1 : 1;

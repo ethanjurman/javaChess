@@ -5,7 +5,7 @@ package board;
 
 import java.util.HashMap;
 
-import pieces.Piece;
+import pieces.*;
 import player.Player;
 
 /**
@@ -28,10 +28,32 @@ public class Board {
 	}
 	
 	public boolean move(Piece piece, BoardPosition position){
+		switch(piece.type){
+		case PAWN:
+			PieceMovement.pawnCheckMove(piece, position, this);
+			break;
+		case BISHOP:
+			PieceMovement.bishopCheckMove(piece, position, this);
+			break;
+		case KING:
+			PieceMovement.kingCheckMove(piece, position, this);
+			break;
+		case KNIGHT:
+			PieceMovement.knightCheckMove(piece, position, this);
+			break;
+		case QUEEN:
+			PieceMovement.queenCheckMove(piece, position, this);
+			break;
+		case ROOK:
+			PieceMovement.rookCheckMove(piece, position, this);
+			break;
+		default:
+			break;
+		}
 		return false;
 	}
 	
-	public void takeTurn(Player player1){
-		player1.turn(this);
+	public void takeTurn(Player player){
+		player.turn(this);
 	}
 }

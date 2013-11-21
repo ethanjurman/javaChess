@@ -4,7 +4,6 @@
 package pieces;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import board.Board;
 import board.BoardPosition;
