@@ -3,6 +3,7 @@
  */
 package board;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import pieces.*;
@@ -14,6 +15,7 @@ import player.Player;
  */
 public class Board {
 	public HashMap<BoardPosition, Piece> pieces;
+	public ArrayList<Piece> history = new ArrayList<Piece>();
 	
 	public Board(){
 		this.pieces = new HashMap<BoardPosition, Piece>();
@@ -28,29 +30,32 @@ public class Board {
 	}
 	
 	public boolean move(Piece piece, BoardPosition position){
+		boolean moveSuccess = false; 
 		switch(piece.type){
 		case PAWN:
-			PieceMovement.pawnCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.pawnCheckMove(piece, position, this);
 			break;
 		case BISHOP:
-			PieceMovement.bishopCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.bishopCheckMove(piece, position, this);
 			break;
 		case KING:
-			PieceMovement.kingCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.kingCheckMove(piece, position, this);
 			break;
 		case KNIGHT:
-			PieceMovement.knightCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.knightCheckMove(piece, position, this);
 			break;
 		case QUEEN:
-			PieceMovement.queenCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.queenCheckMove(piece, position, this);
 			break;
 		case ROOK:
-			PieceMovement.rookCheckMove(piece, position, this);
+			moveSuccess = PieceMovement.rookCheckMove(piece, position, this);
 			break;
 		default:
 			break;
 		}
-		return false;
+		if (moveSuccess)
+			history.add(piece);
+		return moveSuccess;
 	}
 	
 	public void takeTurn(Player player){

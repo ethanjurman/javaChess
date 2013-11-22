@@ -8,9 +8,8 @@ public class PieceMovement {
 		int col = newPosition.col - piece.pos.col;
 		if ((row == 1) && ((col == 1) || (col == -1)))
 			return board.getBoardState().containsKey(newPosition);
-		if ((row == 2) || (row == 1) && (col == 0) && (piece.positionHistory.size() == 1)){
+		if ((row == 2) || (row == 1) && (col == 0) && (piece.positionHistory.size() == 1))
 			return !board.getBoardState().containsKey(newPosition);
-		}
 		return false;
 	}
 	public static boolean knightCheckMove(Piece piece, BoardPosition newPosition, Board board){
